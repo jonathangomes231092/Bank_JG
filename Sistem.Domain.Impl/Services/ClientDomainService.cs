@@ -25,6 +25,8 @@ namespace Sistem.Domain.Impl.Services
 
             if (_unitOfWork.ClientRepository.GetByUser(entity.User) != null)
                 throw new ArgumentException("Usuario ja existe");
+
+            entity.Id = 0;
             
             await _unitOfWork.ClientRepository.CreateAsync(entity);
         }
