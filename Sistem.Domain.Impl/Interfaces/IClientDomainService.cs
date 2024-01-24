@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sistem.Domain.Impl.Interfaces
 {
-    public interface IClientDomainService : IDomainService<Client, int>
+    public interface IClientDomainService : IDomainService<RegisterClient, Guid>
     {
 
     }

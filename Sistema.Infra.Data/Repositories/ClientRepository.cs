@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Sistema.Infra.Data.SqlServer.Repositories
 {
     // classe de repositorio para registro
-    public class ClientRepository : BaseRepository<Client, int>, IClientRepository
+    public class ClientRepository : BaseRepository<RegisterClient, Guid>, IClientRepository
     {
         private readonly SqlServerContext _sqlServerContext;
 
@@ -21,15 +21,15 @@ namespace Sistema.Infra.Data.SqlServer.Repositories
             _sqlServerContext = sqlServerContext;
         }
 
-        public Client GetByEmail(string email)
-            => _sqlServerContext.ResgisterClients
+        public RegisterClient GetByEmail(string email)
+            => _sqlServerContext.Back_Clientes
                 .AsNoTracking()
                 .FirstOrDefault(x =>x.Email.Equals(email));
 
-        public Client GetByUser(string user)
-             => _sqlServerContext.ResgisterClients
+        public RegisterClient GetByUser(string user)
+             => _sqlServerContext.Back_Clientes
                 .AsNoTracking()
-                .FirstOrDefault(x => x.Email.Equals(user));
+                .FirstOrDefault(x => x.User.Equals(user));
         
     }
 }

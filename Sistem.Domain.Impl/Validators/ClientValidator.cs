@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Sistem.Domain.Impl.Validetors
 {
     // classe de validação para a entidade RegisterClient
-    public class ClientValidator : AbstractValidator<Client>
+    public class ClientValidator : AbstractValidator<RegisterClient>
     {
         public ClientValidator()
         {

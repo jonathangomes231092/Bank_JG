@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Sistem.Application.Commands.Client;
 using Sistem.Application.Interfaces;
+using Sistem.Application.Models;
 using Sistem.Domain.Impl.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,19 +20,19 @@ namespace Sistem.Application.Services
             _mediator = mediator;
         }
 
-        public async Task Creat(ClientCreateCommand command)
+        public async Task<ClientDto> Creat(ClientCreateCommand command)
         {
-            await _mediator.Send(command);
+           return await _mediator.Send(command);
         }
 
-        public async Task Delete(ClientDeleteCommand command)
+        public async Task<ClientDto> Delete(ClientDeleteCommand command)
         {
-            await _mediator.Send(command);
+            return await _mediator.Send(command);
         }
 
-        public async Task Update(ClientUpdateCommand command)
+        public async Task<ClientDto> Update(ClientUpdateCommand command)
         {
-            await _mediator.Send(command);
+            return await _mediator.Send(command);
         }
 
         public  void Dispose()

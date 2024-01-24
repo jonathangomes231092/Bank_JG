@@ -23,8 +23,8 @@ namespace Bank_JG.Controllers
         {
             try
             {
-               await _clientAppService.Creat(command);
-                return StatusCode(201); //CRIANDO
+              var client = await _clientAppService.Creat(command);
+                return StatusCode(201, client); //CRIANDO
             }
             catch(ValidationException ex)
             {
@@ -45,8 +45,8 @@ namespace Bank_JG.Controllers
         {
             try
             {
-                await _clientAppService.Update(command);
-                return StatusCode(200); //ok
+                var client = await _clientAppService.Update(command);
+                return StatusCode(200, client); //ok
             }
             catch (ValidationException ex)
             {
@@ -63,14 +63,14 @@ namespace Bank_JG.Controllers
         }
 
         [HttpDelete("DeletarConta/{id}")]
-        public async Task<IActionResult> DeleteAccount(int id)
+        public async Task<IActionResult> DeleteAccount(Guid id)
         {
             try
             {
                 var command = new ClientDeleteCommand { Id = id };
 
-                await _clientAppService.Delete(command);
-                return StatusCode(200); //ok
+                var client = await _clientAppService.Delete(command);
+                return StatusCode(200, client); //ok
             }
             catch (ArgumentException ex)
             {
@@ -83,7 +83,7 @@ namespace Bank_JG.Controllers
         }
 
         [HttpGet("ObterDetalhesDaConta/{id}")]
-        public IActionResult GetAccountDetainls(int id)
+        public IActionResult GetAccountDetainls(Guid id)
         {
             return Ok();
         }

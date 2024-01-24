@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace Sistem.Domain.Impl.Interfaces
 {
     //interface para repositorio de registro de cliente
-    public interface IClientRepository : IRepository<Client, int>
+    public interface IClientRepository : IRepository<RegisterClient, Guid>
     {
-        Client GetByUser(string user);
-        Client GetByEmail(string email);
+        RegisterClient GetByUser(string user);
+        RegisterClient GetByEmail(string email);
     }
 }

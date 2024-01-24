@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Sistem.Application.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Sistem.Application.Commands.Client
 {
-    public class ClientDeleteCommand : IRequest
+    public class ClientDeleteCommand : IRequest<ClientDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

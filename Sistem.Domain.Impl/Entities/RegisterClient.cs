@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Sistem.Domain.Impl.Entities
 {
-    public class Client : IEntity
+    public class RegisterClient : IEntity
     {
         //entidade de dominio
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

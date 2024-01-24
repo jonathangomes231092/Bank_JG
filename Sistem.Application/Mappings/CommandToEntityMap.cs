@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Sistem.Application.Ajudas;
 using Sistem.Application.Commands.Client;
 using Sistem.Domain.Impl.Entities;
 using System;
@@ -17,16 +16,15 @@ namespace Sistem.Application.Mappings
     {
         public CommandToEntityMap()
         {
-            CreateMap<ClientCreateCommand, Client>()
+            CreateMap<ClientCreateCommand, RegisterClient>()
                 .AfterMap((Command, entity) =>
                 {
-                    
-                    entity.Id = IdGenerator.GenerateNewId();
+                    entity.Id = Guid.NewGuid();                 
                     entity.CreatedAt = DateTime.Now;
                     entity.UpdatedAt = DateTime.Now;
                 });
 
-            CreateMap<ClientUpdateCommand, Client>()
+            CreateMap<ClientUpdateCommand, RegisterClient>()
                 .AfterMap((Command, entity) => 
                 {
                     entity.UpdatedAt = DateTime.Now;

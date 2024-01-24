@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using Sistem.Application.Commands.Client;
 using Sistem.Application.Interfaces;
+using Sistem.Application.Models;
 using Sistem.Domain.Impl.Entities;
 using Sistem.Domain.Impl.Interfaces;
 using System;
@@ -17,9 +18,9 @@ namespace Sistem.Application.RequestHandlers
     /// componente de Mediatr para processamento dos COMMANDS ( CREATE, UPDATE e DELETE)
     /// </summary>
     public class ClientRequestHandler : IDisposable,
-        IRequestHandler<ClientCreateCommand>,
-        IRequestHandler<ClientDeleteCommand>,
-        IRequestHandler<ClientUpdateCommand>
+        IRequestHandler<ClientCreateCommand, ClientDto>,
+        IRequestHandler<ClientDeleteCommand, ClientDto>,
+        IRequestHandler<ClientUpdateCommand, ClientDto>
     {
         private readonly IClientDomainService _clientDomainService;
         private readonly IMediator _mediator;
@@ -35,10 +36,10 @@ namespace Sistem.Application.RequestHandlers
         }
 
         //create
-         public async Task<Unit> Handle(ClientCreateCommand request, CancellationToken cancellationToken)
+         public async Task<ClientDto> Handle(ClientCreateCommand request, CancellationToken cancellationToken)
          {
              // capiturando dados do cliente
-             var client = _mapper.Map<Client>(request);
+             var client = _mapper.Map<RegisterClient>(request);
 
              // executando a validação da entidade cliente
              if (!client.validationResult.IsValid)
@@ -46,14 +47,14 @@ namespace Sistem.Application.RequestHandlers
 
              await _clientDomainService.CreateAsync(client);
 
-             return Unit.Value;
+             return _mapper.Map<ClientDto>(client);
          }
 
          //Update
-         public async Task<Unit> Handle(ClientUpdateCommand request, CancellationToken cancellationToken)
+         public async Task<ClientDto> Handle(ClientUpdateCommand request, CancellationToken cancellationToken)
          {
              // capiturando dados do cliente
-             var client = _mapper.Map<Client>(request);
+             var client = _mapper.Map<RegisterClient>(request);
 
              // executando a validação da entidade cliente
              if (!client.validationResult.IsValid)
@@ -61,19 +62,19 @@ namespace Sistem.Application.RequestHandlers
 
              await _clientDomainService.UpdateAsync(client);
 
-             return Unit.Value;
-         }
+            return _mapper.Map<ClientDto>(client);
+        }
 
          // delete
-         public async Task<Unit> Handle(ClientDeleteCommand request, CancellationToken cancellationToken)
+         public async Task<ClientDto> Handle(ClientDeleteCommand request, CancellationToken cancellationToken)
          {
 
              var client = await _clientDomainService.GetByIdAsync(request.Id);
 
              await _clientDomainService.DeleteAsync(client);
 
-             return Unit.Value;
-         }
+            return _mapper.Map<ClientDto>(client);
+        }
 
         public void Dispose()
         {

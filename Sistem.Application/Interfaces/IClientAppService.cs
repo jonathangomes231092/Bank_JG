@@ -1,4 +1,5 @@
 ﻿using Sistem.Application.Commands.Client;
+using Sistem.Application.Models;
 using Sistem.Domain.Impl.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Sistem.Application.Interfaces
 {
     public interface IClientAppService : IDisposable
     {
-        Task Creat(ClientCreateCommand command);
-        Task Delete(ClientDeleteCommand command);
-        Task Update(ClientUpdateCommand command);
+        Task<ClientDto> Creat(ClientCreateCommand command);
+        Task<ClientDto> Delete(ClientDeleteCommand command);
+        Task<ClientDto> Update(ClientUpdateCommand command);
     }
 }

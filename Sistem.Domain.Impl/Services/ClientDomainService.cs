@@ -18,7 +18,7 @@ namespace Sistem.Domain.Impl.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task CreateAsync(Client entity)
+        public async Task CreateAsync(RegisterClient entity)
         {
             if (_unitOfWork.ClientRepository.GetByEmail(entity.Email) != null)
                 throw new ArgumentException("O email informado ja existe");
@@ -29,7 +29,7 @@ namespace Sistem.Domain.Impl.Services
             await _unitOfWork.ClientRepository.CreateAsync(entity);
         }
 
-        public async Task UpdateAsync(Client entity)
+        public async Task UpdateAsync(RegisterClient entity)
         {
             if (await _unitOfWork.ClientRepository.GetByIdAsync(entity.Id) == null)
                 throw new ArgumentException("Usuario nao encontrado");
@@ -40,7 +40,7 @@ namespace Sistem.Domain.Impl.Services
 
         }
 
-        public async Task DeleteAsync(Client entity)
+        public async Task DeleteAsync(RegisterClient entity)
         {
             if (await _unitOfWork.ClientRepository.GetByIdAsync(entity.Id) == null)
                 throw new ArgumentException("Usuario nao encontrado");
@@ -48,7 +48,7 @@ namespace Sistem.Domain.Impl.Services
            await _unitOfWork.ClientRepository.DeleteAsync(entity);
         }
 
-        public async Task<List<Client>> GetAllAsync(int page, int limit)
+        public async Task<List<RegisterClient>> GetAllAsync(int page, int limit)
         {
             if (limit > 250)
                 throw new ArgumentException("Limite maximo 250");
@@ -56,7 +56,7 @@ namespace Sistem.Domain.Impl.Services
             return await _unitOfWork.ClientRepository.GetAllAsync(page, limit);
         }
 
-        public async Task<Client> GetByIdAsync(int id)
+        public async Task<RegisterClient> GetByIdAsync(Guid id)
             => await _unitOfWork.ClientRepository.GetByIdAsync(id);
 
         public void Dispose()

@@ -25,6 +25,6 @@ namespace Sistema.Infra.Data.SqlServer.Contexts
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
         }
 
-        public DbSet<Client>? ResgisterClients { get; set; }
+        public DbSet<RegisterClient>? Back_Clientes { get; set; }
     }
 }

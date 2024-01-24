@@ -1,1 +1,6 @@
-﻿select * from resgisterClients
+﻿CREATE TABLE Users (
+    Id UNIQUEIDENTIFIER PRIMARY KEY,
+    [User] NVARCHAR(255),
+    Email NVARCHAR(255),
+    [Password] NVARCHAR(255)
+);

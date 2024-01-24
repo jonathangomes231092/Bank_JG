@@ -40,7 +40,7 @@ namespace Sistema.Infra.Data.SqlServer.Repositories
         {
             _sqlServerContext.Dispose();
         }
-
+        
         public IClientRepository ClientRepository => new ClientRepository(_sqlServerContext);
     }
 }
