@@ -1,0 +1,1 @@
+﻿select * from dbo.Clientes where id = 24401472-461d-4f40-9136-e57595414c16

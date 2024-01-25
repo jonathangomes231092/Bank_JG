@@ -15,17 +15,17 @@ namespace Sistem.Domain.Impl.Validetors
         {
             RuleFor(x => x.Id)
                .NotEmpty()
-               .WithMessage("Id obragatorio");
+               .WithMessage("Id obrigatório");
 
             RuleFor(x => x.User)
                 .NotEmpty()
-                .WithMessage("Nome obrigatorio")
+                .WithMessage("Nome obrigatório")
                 .Length(6, 150)
                 .WithMessage("Nome deve possuir de 6 a 150 caracteres");
 
             RuleFor(x => x.Email)
                 .NotEmpty()
-                .WithMessage("Email obrigatorio")
+                .WithMessage("Email obrigatório")
                 .EmailAddress().WithMessage("Endereço de email invalido");
 
             RuleFor(x => x.Password)

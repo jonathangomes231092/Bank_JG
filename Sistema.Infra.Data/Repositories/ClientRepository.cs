@@ -22,12 +22,12 @@ namespace Sistema.Infra.Data.SqlServer.Repositories
         }
 
         public RegisterClient GetByEmail(string email)
-            => _sqlServerContext.Back_Clientes
+            => _sqlServerContext.Clientes
                 .AsNoTracking()
                 .FirstOrDefault(x =>x.Email.Equals(email));
 
         public RegisterClient GetByUser(string user)
-             => _sqlServerContext.Back_Clientes
+             => _sqlServerContext.Clientes
                 .AsNoTracking()
                 .FirstOrDefault(x => x.User.Equals(user));
         

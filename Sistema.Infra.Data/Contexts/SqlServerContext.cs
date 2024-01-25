@@ -13,7 +13,13 @@ namespace Sistema.Infra.Data.SqlServer.Contexts
     //classe de contexto do entityFramework para o sqlServer
     public class SqlServerContext : DbContext
     {
-        // contrutor da superclasse (DbContext)
+
+       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BD_Usuarios;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+        }*/
+
+        // construtor da superclasse (DbContext)
         public SqlServerContext(DbContextOptions<SqlServerContext> dbContextOptions)
             : base(dbContextOptions)
         {
@@ -25,6 +31,6 @@ namespace Sistema.Infra.Data.SqlServer.Contexts
             modelBuilder.ApplyConfiguration(new ClientConfiguration());
         }
 
-        public DbSet<RegisterClient>? Back_Clientes { get; set; }
+        public DbSet<RegisterClient>? Clientes { get; set; }
     }
 }

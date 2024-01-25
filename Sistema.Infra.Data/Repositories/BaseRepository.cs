@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sistem.Domain.Interfaces;
 using Sistema.Infra.Data.SqlServer.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Dapper.SqlMapper;
 
 namespace Sistema.Infra.Data.SqlServer.Repositories
 {

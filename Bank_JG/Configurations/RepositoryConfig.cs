@@ -11,7 +11,7 @@ namespace Bank_JG.Configurations
         {
             builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
-            var connectionString = builder.Configuration.GetConnectionString("BDClients");
+            var connectionString = builder.Configuration.GetConnectionString("BD_Usuarios");
             builder.Services.AddDbContext<SqlServerContext>
                 (options => options.UseSqlServer(connectionString));
         }
