@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sistem.Domain.Interfaces
+﻿namespace Sistem.Domain.Interfaces
 {
     /// <summary>
     /// interface para operações com as entidades
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TKey"></typeparam>
-    public interface IDomainService <TEntity, TKey> : IDisposable // para destruir oque foi contruido por enjeção de dependencia
+    public interface IDomainService<TEntity, TKey> : IDisposable // para destruir oque foi contruido por enjeção de dependencia
         where TEntity : class
     {
         Task CreateAsync(TEntity entity);

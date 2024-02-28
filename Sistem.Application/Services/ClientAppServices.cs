@@ -2,12 +2,6 @@
 using Sistem.Application.Commands.Client;
 using Sistem.Application.Interfaces;
 using Sistem.Application.Models;
-using Sistem.Domain.Impl.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sistem.Application.Services
 {
@@ -22,7 +16,7 @@ namespace Sistem.Application.Services
 
         public async Task<ClientDto> Creat(ClientCreateCommand command)
         {
-           return await _mediator.Send(command);
+            return await _mediator.Send(command);
         }
 
         public async Task<ClientDto> Delete(ClientDeleteCommand command)
@@ -35,7 +29,7 @@ namespace Sistem.Application.Services
             return await _mediator.Send(command);
         }
 
-        public  void Dispose()
+        public void Dispose()
         {
             GC.SuppressFinalize(this);
         }

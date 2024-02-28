@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Sistem.Application.Commands.Client;
 using Sistem.Application.Interfaces;
-using Sistem.Domain.Impl.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bank_JG.Controllers
@@ -23,10 +21,10 @@ namespace Bank_JG.Controllers
         {
             try
             {
-              var client = await _clientAppService.Creat(command);
+                var client = await _clientAppService.Creat(command);
                 return StatusCode(201, client); //CRIANDO
             }
-            catch(ValidationException ex)
+            catch (ValidationException ex)
             {
                 return StatusCode(400, ex.Message); // bad request
             }
@@ -34,7 +32,7 @@ namespace Bank_JG.Controllers
             {
                 return StatusCode(400, new { ex.Message });// bad request
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 return StatusCode(500, new { ex.Message }); // internal server error
             }

@@ -1,22 +1,17 @@
 ﻿using Sistem.Domain.Impl.Entities;
 using Sistem.Domain.Impl.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sistem.Domain.Impl.Services
 {
     // classe de serviço de dominio para entidade RegisterClient
     public class ClientDomainService : IClientDomainService
     {
-       private readonly IUnitOfWork _unitOfWork;
+            private readonly IUnitOfWork _unitOfWork;
 
-        public ClientDomainService(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+            public ClientDomainService(IUnitOfWork unitOfWork)
+            {
+                _unitOfWork = unitOfWork;
+            }
 
         public async Task CreateAsync(RegisterClient entity)
         {
@@ -25,7 +20,7 @@ namespace Sistem.Domain.Impl.Services
 
             if (_unitOfWork.ClientRepository.GetByUser(entity.User) != null)
                 throw new ArgumentException("Usuario ja existe");
-            
+
             await _unitOfWork.ClientRepository.CreateAsync(entity);
         }
 
@@ -35,7 +30,7 @@ namespace Sistem.Domain.Impl.Services
                 throw new ArgumentException("Usuario nao encontrado");
 
             var clienteByEmail = _unitOfWork.ClientRepository.GetByEmail(entity.Email);
-            if(clienteByEmail != null && clienteByEmail.Id.Equals( entity.Id))
+            if (clienteByEmail != null && clienteByEmail.Id.Equals(entity.Id))
                 throw new ArgumentException("Email nao encontrado");
 
         }
@@ -45,7 +40,7 @@ namespace Sistem.Domain.Impl.Services
             if (await _unitOfWork.ClientRepository.GetByIdAsync(entity.Id) == null)
                 throw new ArgumentException("Usuario nao encontrado");
 
-           await _unitOfWork.ClientRepository.DeleteAsync(entity);
+            await _unitOfWork.ClientRepository.DeleteAsync(entity);
         }
 
         public async Task<List<RegisterClient>> GetAllAsync(int page, int limit)

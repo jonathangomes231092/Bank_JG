@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sistem.Domain.Impl.Entities
 {
-    public class RegisterClient : IEntity
+    public class RegisterClient : IEntity 
     {
         //entidade de dominio
         public Guid Id { get; set; }
